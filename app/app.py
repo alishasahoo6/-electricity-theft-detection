@@ -18,7 +18,13 @@ n = st.slider("Select number of data points", 500, 5000, 2000)
 from src.model import train_model
 
  
-df = load_data("../data/raw/Household Power Consumption.csv")
+import os
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+data_path = os.path.join(BASE_DIR, "data", "raw", "Household Power Consumption.csv")
+
+df = load_data(data_path)
 df = preprocess(df)
 df = create_features(df)
 
